@@ -1,3 +1,4 @@
+import 'package:BMICalculator/widgets/genderSelection.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -6,21 +7,34 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+  Color _colorFromHex(String hexColor) {
+  final hexCode = hexColor.replaceAll('#', '');
+  return Color(int.parse('FF$hexCode', radix: 16));
+  }
+
   @override
   Widget build(BuildContext context) {
     return 
     Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: _colorFromHex("#1C2833"),
       appBar: AppBar(
-        title:Text('BMI Calculator'),
-        backgroundColor: Colors.black,
+        title:Text('BMI CALACULATOR'),
+        backgroundColor: _colorFromHex("#1C2833"),
         centerTitle: true,
       ),
       body: 
-      Center(
-      child: 
-      Text('BMI Calculator'),
-      ),
+      Container(
+        child:Column(
+          children: <Widget>[
+            Container(
+            height: 15.0,
+            color: _colorFromHex('#17202A'),
+          ),
+          GenderSelection(),
+          ],
+          )
+      )
     );
   }
 }
