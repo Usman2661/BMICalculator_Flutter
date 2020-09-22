@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 
-
-class GenderSelection extends StatefulWidget {
+class WeightAge extends StatefulWidget {
   @override
-  _GenderSelectionState createState() => _GenderSelectionState();
+  _WeightAgeState createState() => _WeightAgeState();
 }
 
-class _GenderSelectionState extends State<GenderSelection> {
-
+class _WeightAgeState extends State<WeightAge> {
 
   Color _colorFromHex(String hexColor) {
   final hexCode = hexColor.replaceAll('#', '');
@@ -26,28 +24,29 @@ class _GenderSelectionState extends State<GenderSelection> {
             color: _colorFromHex('#273746'),
             child: InkWell(
             splashColor: Colors.blue.withAlpha(30),
-            onTap: () {
-              print('Card tapped.');
-            },
             child: Padding(
               padding: const EdgeInsets.fromLTRB(50.0,20.0,50.0,20.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  Icon(
-                    MaterialCommunityIcons.gender_male,
-                    color: Colors.grey,
-                    size: 70.0,
-                  ),
-                  SizedBox(height: 15.0),
-                  Text('MALE',
+                Text('WEIGHT',
                   style: TextStyle(
                     color: Colors.grey,
                     fontSize: 20.0,
                     fontWeight: FontWeight.bold
                   )
+                  ),
+                  SizedBox(height: 5.0),
+                   Text('74',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 40.0,
+                    fontWeight: FontWeight.bold
                   )
+                  ),
+                  Row(children: <Widget>[],)
+                  
                 ], 
               ),
             ),
@@ -68,19 +67,21 @@ class _GenderSelectionState extends State<GenderSelection> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  Icon(
-                    MaterialCommunityIcons.gender_female,
-                    color: Colors.grey,
-                    size: 70.0,
-                  ),
-                  SizedBox(height: 15.0),
-                  Text('FEMALE',
+                Text('AGE',
                   style: TextStyle(
                     color: Colors.grey,
                     fontSize: 20.0,
                     fontWeight: FontWeight.bold
                   )
+                  ),
+                  SizedBox(height: 5.0),
+                   Text('19',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 40.0,
+                    fontWeight: FontWeight.bold
                   )
+                  ),
                 ], 
               ),
             ),
@@ -89,7 +90,7 @@ class _GenderSelectionState extends State<GenderSelection> {
 
 
         ],
-        
+    
       ),
     );
   }

@@ -1,4 +1,6 @@
 import 'package:BMICalculator/widgets/genderSelection.dart';
+import 'package:BMICalculator/widgets/height.dart';
+import 'package:BMICalculator/widgets/weighAge.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -32,6 +34,8 @@ class _HomeState extends State<Home> {
             color: _colorFromHex('#17202A'),
           ),
           GenderSelection(),
+          Height(),
+          WeightAge(),
           ],
           )
       )
