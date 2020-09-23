@@ -5,10 +5,13 @@ import 'package:flutter_icons/flutter_icons.dart';
 class GenderSelection extends StatefulWidget {
   @override
   _GenderSelectionState createState() => _GenderSelectionState();
+
+    Function(bool) onGenderSelectionCallBack;
+    GenderSelection( this.onGenderSelectionCallBack);
+
 }
 
 class _GenderSelectionState extends State<GenderSelection> {
-
 
   Color _colorFromHex(String hexColor) {
   final hexCode = hexColor.replaceAll('#', '');
@@ -30,10 +33,13 @@ class _GenderSelectionState extends State<GenderSelection> {
             color: _colorFromHex('#212F3D'),
             child: InkWell(
             splashColor: Colors.blue.withAlpha(30),
-            onTap: () {
+            onTap: () async {
+
               setState(() {
                 gender = true;
               });
+              
+              await widget.onGenderSelectionCallBack(true);
 
             },
             child: Padding(
@@ -68,10 +74,14 @@ class _GenderSelectionState extends State<GenderSelection> {
             color: _colorFromHex('#212F3D'),
             child: InkWell(
             splashColor: Colors.blue.withAlpha(30),
-            onTap: () {
+            onTap: () async{
+
               setState(() {
                 gender = false;
               });
+          
+              await widget.onGenderSelectionCallBack(false);
+
             },
             child: Padding(
               padding: const EdgeInsets.fromLTRB(0,15,0,15),

@@ -4,6 +4,10 @@ import 'package:flutter_icons/flutter_icons.dart';
 class WeightAge extends StatefulWidget {
   @override
   _WeightAgeState createState() => _WeightAgeState();
+
+  Function(int ,int ) onAgeAndWeightSelectionCallback;
+  WeightAge(this.onAgeAndWeightSelectionCallback);
+
 }
 
 class _WeightAgeState extends State<WeightAge> {
@@ -56,10 +60,12 @@ class _WeightAgeState extends State<WeightAge> {
                  SizedBox(
                       width:60.0,
                       child: RawMaterialButton(
-                    onPressed: () {
+                    onPressed: () async{
                         setState(() {
                         weight--;
                       });
+
+                      await widget.onAgeAndWeightSelectionCallback(age,weight--);
                     },
                     elevation: 10.0,
                     fillColor: _colorFromHex('#34495E'),
@@ -77,10 +83,12 @@ class _WeightAgeState extends State<WeightAge> {
                     SizedBox(
                     width:60.0,
                     child: RawMaterialButton(
-                    onPressed: () {
+                    onPressed: () async{
                         setState(() {
                         weight++;
                       });
+
+                    await widget.onAgeAndWeightSelectionCallback(age,weight++);
                     },
                     elevation: 10.0,
                     fillColor: _colorFromHex('#34495E'),
@@ -138,10 +146,12 @@ class _WeightAgeState extends State<WeightAge> {
                  SizedBox(
                       width:60.0,
                       child: RawMaterialButton(
-                    onPressed: () {
+                    onPressed: () async{
                       setState(() {
                         age--;
                       });
+
+                      await widget.onAgeAndWeightSelectionCallback(age--,weight);
                     },
                     elevation: 10.0,
                     fillColor: _colorFromHex('#34495E'),
@@ -159,10 +169,11 @@ class _WeightAgeState extends State<WeightAge> {
                     SizedBox(
                     width:60.0,
                     child: RawMaterialButton(
-                    onPressed: () {
-                       setState(() {
+                    onPressed: () async{
+                       await setState(() {
                         age++;
                       });
+                      await widget.onAgeAndWeightSelectionCallback(age++,weight);
                     },
                     elevation: 10.0,
                     fillColor: _colorFromHex('#34495E'),

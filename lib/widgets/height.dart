@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 class Height extends StatefulWidget {
   @override
   _HeightState createState() => _HeightState();
+
+  Function(int) onHeightSelectionCallback;
+  Height(this.onHeightSelectionCallback);
 }
 
 class _HeightState extends State<Height> {
@@ -91,11 +94,14 @@ class _HeightState extends State<Height> {
                     min: 0,
                     max: 300,
                     divisions: 300,
-                    onChanged: (double value) {
-                      setState(() {
+                    onChanged: (double value) async {
+
+                      await setState(() {
                         height = value;
                         currentHeight = value.toInt();
                       });
+
+                      await widget.onHeightSelectionCallback(value.toInt());
                     },
                   ),
                     ),
