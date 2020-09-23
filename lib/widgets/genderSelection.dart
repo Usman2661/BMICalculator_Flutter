@@ -15,35 +15,42 @@ class _GenderSelectionState extends State<GenderSelection> {
   return Color(int.parse('FF$hexCode', radix: 16));
   }
 
+  bool gender = true;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(15.0,10.0,15.0,10.0),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          Card(
+          Expanded(
+            flex: 2,
+            child: Card(
             color: _colorFromHex('#273746'),
             child: InkWell(
             splashColor: Colors.blue.withAlpha(30),
             onTap: () {
-              print('Card tapped.');
+              setState(() {
+                gender = true;
+              });
+
             },
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(50.0,20.0,50.0,20.0),
+              padding: const EdgeInsets.fromLTRB(0,15,0,15),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Icon(
                     MaterialCommunityIcons.gender_male,
-                    color: Colors.grey,
+                    color: gender ? Colors.white : Colors.grey,
                     size: 70.0,
                   ),
                   SizedBox(height: 15.0),
                   Text('MALE',
                   style: TextStyle(
-                    color: Colors.grey,
+                    color: gender ? Colors.white : Colors.grey,
                     fontSize: 20.0,
                     fontWeight: FontWeight.bold
                   )
@@ -53,30 +60,34 @@ class _GenderSelectionState extends State<GenderSelection> {
             ),
           ),
           ),
-    
+           ),
 
-             Card(
+           Expanded(
+             flex: 2,
+             child:   Card(
             color: _colorFromHex('#273746'),
             child: InkWell(
             splashColor: Colors.blue.withAlpha(30),
             onTap: () {
-              print('Card tapped.');
+              setState(() {
+                gender = false;
+              });
             },
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(50.0,20.0,50.0,20.0),
+              padding: const EdgeInsets.fromLTRB(0,15,0,15),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Icon(
                     MaterialCommunityIcons.gender_female,
-                    color: Colors.grey,
+                    color: gender ? Colors.grey : Colors.white,
                     size: 70.0,
                   ),
                   SizedBox(height: 15.0),
                   Text('FEMALE',
                   style: TextStyle(
-                    color: Colors.grey,
+                    color: gender ? Colors.grey : Colors.white,
                     fontSize: 20.0,
                     fontWeight: FontWeight.bold
                   )
@@ -85,9 +96,9 @@ class _GenderSelectionState extends State<GenderSelection> {
               ),
             ),
           ),
-          ),
-
-
+          ), 
+          )
+        
         ],
         
       ),

@@ -13,6 +13,9 @@ class _WeightAgeState extends State<WeightAge> {
   return Color(int.parse('FF$hexCode', radix: 16));
   }
 
+  int age = 19;
+  int weight = 70;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -20,12 +23,14 @@ class _WeightAgeState extends State<WeightAge> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          Card(
+          Expanded(
+            flex: 1,
+            child:Card(
             color: _colorFromHex('#273746'),
             child: InkWell(
             splashColor: Colors.blue.withAlpha(30),
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(50.0,20.0,50.0,20.0),
+              padding: const EdgeInsets.fromLTRB(0.0,10.0,0.0,10.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -38,31 +43,76 @@ class _WeightAgeState extends State<WeightAge> {
                   )
                   ),
                   SizedBox(height: 5.0),
-                   Text('74',
+                   Text(weight.toString(),
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 40.0,
                     fontWeight: FontWeight.bold
                   )
                   ),
-                  Row(children: <Widget>[],)
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                 SizedBox(
+                      width:60.0,
+                      child: RawMaterialButton(
+                    onPressed: () {
+                        setState(() {
+                        weight--;
+                      });
+                    },
+                    elevation: 10.0,
+                    fillColor: _colorFromHex('#34495E'),
+                    child: Icon(
+                      Icons.remove,
+                      size: 35.0,
+                      color: Colors.white,
+                    ),
+                    padding: EdgeInsets.all(10.0),
+                    shape: CircleBorder(
+                      side: BorderSide(color: _colorFromHex('#34495E'),)
+                    ),
+                    ),
+                    ),
+                    SizedBox(
+                    width:60.0,
+                    child: RawMaterialButton(
+                    onPressed: () {
+                        setState(() {
+                        weight++;
+                      });
+                    },
+                    elevation: 10.0,
+                    fillColor: _colorFromHex('#34495E'),
+                    child: Icon(
+                      Icons.add,
+                      size: 35.0,
+                      color: Colors.white,
+                    ),
+                    padding: EdgeInsets.all(10.0),
+                    shape: CircleBorder(
+                      side: BorderSide(color: _colorFromHex('#34495E'),)
+                    ),
+                    ),
+                    )
+                  ],
+                  )
                   
                 ], 
               ),
             ),
           ),
           ),
-    
-
-             Card(
+        ),
+          
+             Expanded(
+            flex: 1,
+            child:Card(
             color: _colorFromHex('#273746'),
             child: InkWell(
             splashColor: Colors.blue.withAlpha(30),
-            onTap: () {
-              print('Card tapped.');
-            },
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(50.0,20.0,50.0,20.0),
+              padding: const EdgeInsets.fromLTRB(0.0,10.0,0.0,10.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -75,22 +125,68 @@ class _WeightAgeState extends State<WeightAge> {
                   )
                   ),
                   SizedBox(height: 5.0),
-                   Text('19',
+                   Text(age.toString(),
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 40.0,
                     fontWeight: FontWeight.bold
                   )
                   ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                 SizedBox(
+                      width:60.0,
+                      child: RawMaterialButton(
+                    onPressed: () {
+                      setState(() {
+                        age--;
+                      });
+                    },
+                    elevation: 10.0,
+                    fillColor: _colorFromHex('#34495E'),
+                    child: Icon(
+                      Icons.remove,
+                      size: 35.0,
+                      color: Colors.white,
+                    ),
+                    padding: EdgeInsets.all(10.0),
+                    shape: CircleBorder(
+                      side: BorderSide(color: _colorFromHex('#34495E'),)
+                    ),
+                    ),
+                    ),
+                    SizedBox(
+                    width:60.0,
+                    child: RawMaterialButton(
+                    onPressed: () {
+                       setState(() {
+                        age++;
+                      });
+                    },
+                    elevation: 10.0,
+                    fillColor: _colorFromHex('#34495E'),
+                    child: Icon(
+                      Icons.add,
+                      size: 35.0,
+                      color: Colors.white,
+                    ),
+                    padding: EdgeInsets.all(10.0),
+                    shape: CircleBorder(
+                      side: BorderSide(color: _colorFromHex('#34495E'),)
+                    ),
+                    ),
+                    )
+                  ],
+                  )
+                  
                 ], 
               ),
             ),
           ),
           ),
-
-
+        ),
         ],
-    
       ),
     );
   }

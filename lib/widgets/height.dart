@@ -22,12 +22,15 @@ class _HeightState extends State<Height> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-             Card(
+          Expanded(
+            flex: 1,
+            child:  Card(
             color: _colorFromHex('#273746'),
             child: InkWell(
             splashColor: Colors.blue.withAlpha(30),
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(25,10,25,20),
+              padding: const EdgeInsets.all(10),
+              // padding: const EdgeInsets.fromLTRB(25,10,25,20),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -42,7 +45,8 @@ class _HeightState extends State<Height> {
                   ),
                   SizedBox(height: 5.0),
                   Row(
-                    crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment:CrossAxisAlignment.end,
                     children: <Widget>[
                   Text( currentHeight.toString(),
                   style: TextStyle(
@@ -67,13 +71,21 @@ class _HeightState extends State<Height> {
                   Container(
                     width: 300,
                     child:  
-                    
                     SliderTheme(
-    data: SliderThemeData(
+            data: SliderThemeData(
             thumbColor: Colors.pink,
             activeTrackColor: Colors.white,
             inactiveTrackColor: Colors.grey,
-            thumbShape: RoundSliderThumbShape(enabledThumbRadius: 20)),
+            overlappingShapeStrokeColor: Colors.pink,
+            overlayShape: RoundSliderOverlayShape(
+              overlayRadius: 10
+            ),
+            overlayColor: Colors.pink,
+            thumbShape: RoundSliderThumbShape(
+              enabledThumbRadius: 20,
+              elevation: 40
+              )
+              ),
             child:Slider( 
                     value: height,
                     min: 0,
@@ -92,7 +104,8 @@ class _HeightState extends State<Height> {
               ),
             ),
           ),
-          ),
+          ), 
+          ),    
         ],
       ),
     );
