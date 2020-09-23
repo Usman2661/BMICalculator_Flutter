@@ -18,6 +18,10 @@ class _HomeState extends State<Home> {
   int heightInCm = 100;
   bool gender = true;
   double bmiScore;
+  String bmiCatagory;
+  String bmiColor;
+  String bmiFeedback;
+
   Color _colorFromHex(String hexColor) {
   final hexCode = hexColor.replaceAll('#', '');
   return Color(int.parse('FF$hexCode', radix: 16));
@@ -49,12 +53,47 @@ class _HomeState extends State<Home> {
 
   Future calculateBMI() async {
 
-       double bmi = (weightInKg / heightInCm / heightInCm) * 10000;
+        double bmi = (weightInKg / heightInCm / heightInCm) * 10000;
 
-          setState(() {
+          await setState(() {
                   bmiScore = bmi;
            });
 
+           if (bmi < 18.5){
+
+            setState(() {
+                bmiCatagory = 'UNDERWEIGHT';
+                bmiColor = '#FFFF00';
+                bmiFeedback = 'You are underweight for your age and height. Try gaining a bit of weight!!';
+            });
+
+           }
+            if (bmi > 18.5 && bmi <25){
+
+                setState(() {
+                bmiCatagory = 'NORMAL';
+                bmiColor = '#008000';
+                bmiFeedback = 'You have a normal body weight. Good Job !';
+            });
+             
+           }
+           if (bmi > 25 && bmi <30){
+                setState(() {
+                bmiCatagory = 'OVERWIGHT';
+                bmiColor = '#E67E22';
+                bmiFeedback = 'You are a little overweight from your normal. Try losing few pounds!';
+            });
+             
+           }
+           if (bmi > 30){
+
+                setState(() {
+                bmiCatagory = 'OBESE';
+                bmiColor = '#FF0000';
+                bmiFeedback = 'Your weight is in the obese range which puts you at health risks. Try losing weight to healthy range!';
+            });
+             
+           }
   }
 
    void initState() {
@@ -98,9 +137,21 @@ class _HomeState extends State<Home> {
                         onPressed: () async {
                           await calculateBMI();
 
+                          print(bmiCatagory);
+                          print(bmiColor);
+                          print(bmiFeedback);
+
+
+      
+                          String bmiScoreVal = bmiScore.toStringAsFixed(2); // 1.51
+
+
                           await Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => BMIResult(bmiScore: bmiScore)),
+                          MaterialPageRoute(builder: (context) => BMIResult(bmiScore: bmiScoreVal, 
+                          bmiCatagory: bmiCatagory,
+                          bmiColor: bmiColor,
+                          bmiFeedback: bmiFeedback,)),
                           ).then((_) {
                           // Timer(Duration(seconds: 1), () {
                           //      loadTodos();

@@ -3,8 +3,11 @@ class BMIResult extends StatefulWidget {
   @override
   _BMIResultState createState() => _BMIResultState();
 
-  final double bmiScore;
-  BMIResult({Key key, @required this.bmiScore}) : super(key: key);
+  final String bmiScore;
+  final String bmiCatagory;
+  final String bmiColor; 
+  final String bmiFeedback;
+  BMIResult({Key key, @required this.bmiScore,@required this.bmiCatagory,@required this.bmiColor,@required this.bmiFeedback}) : super(key: key);
 
 }
 
@@ -48,7 +51,7 @@ class _BMIResultState extends State<BMIResult> {
             ),
           ),
 
-            Expanded(flex: 6, 
+            Expanded(flex: 8, 
             child: Padding(
               padding: const EdgeInsets.fromLTRB(30,10,30,10),
               child: Row(
@@ -66,15 +69,15 @@ class _BMIResultState extends State<BMIResult> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     SizedBox(height: 15.0),
-                    Text('NORMAL',
+                    Text(widget.bmiCatagory,
                     style: TextStyle(
-                      color: Colors.green,
+                      color: _colorFromHex(widget.bmiColor),
                       fontSize: 20.0,
                       fontWeight: FontWeight.bold
                     )
                     ),
                     SizedBox(height: 15.0),
-                    Text(widget.bmiScore.toString(),
+                    Text( (widget.bmiScore!=null) ? widget.bmiScore :'22.22',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 100.0,
@@ -101,7 +104,7 @@ class _BMIResultState extends State<BMIResult> {
                       padding: const EdgeInsets.fromLTRB(55,0,55,0),
                       child: Container(
                       child:  
-                      Text('You have a normal body weight. Good Job !',
+                      Text(widget.bmiFeedback,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 18.0,
@@ -159,7 +162,8 @@ class _BMIResultState extends State<BMIResult> {
             RaisedButton(
             elevation: 10.0,
             color: Colors.pink,
-            onPressed: () async {          
+            onPressed: () async {  
+              Navigator.pop(context);   
                         },
                         child:
                         Row(
