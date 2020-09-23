@@ -25,7 +25,7 @@ class _HeightState extends State<Height> {
           Expanded(
             flex: 1,
             child:  Card(
-            color: _colorFromHex('#273746'),
+            color: _colorFromHex('#212F3D'),
             child: InkWell(
             splashColor: Colors.blue.withAlpha(30),
             child: Padding(

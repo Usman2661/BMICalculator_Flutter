@@ -27,7 +27,7 @@ class _GenderSelectionState extends State<GenderSelection> {
           Expanded(
             flex: 2,
             child: Card(
-            color: _colorFromHex('#273746'),
+            color: _colorFromHex('#212F3D'),
             child: InkWell(
             splashColor: Colors.blue.withAlpha(30),
             onTap: () {
@@ -65,7 +65,7 @@ class _GenderSelectionState extends State<GenderSelection> {
            Expanded(
              flex: 2,
              child:   Card(
-            color: _colorFromHex('#273746'),
+            color: _colorFromHex('#212F3D'),
             child: InkWell(
             splashColor: Colors.blue.withAlpha(30),
             onTap: () {
